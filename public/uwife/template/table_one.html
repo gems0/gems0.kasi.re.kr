@@ -1,0 +1,66 @@
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <!-- <div class="row"> -->
+            <!--     <div class="col-lg-12 col-sm-12"> -->
+	    <!-- 	    <a href="http://kgmtscience.kasi.re.kr/gems0/uwife/coadd_jpg/{[{ uwife_id_str }]}_coadd_H2_FeII_J.jpg"> -->
+            <!--           <img class="img-responsive" ng-src="http://kgmtscience.kasi.re.kr/gems0/uwife/coadd_jpg/{[{ uwife_id_str }]}_coadd_H2_FeII_J.jpg" alt=""> -->
+	    <!-- 	    </a> -->
+            <!--     </div> -->
+            <!-- </div> -->
+
+
+            <div class="row">
+                <div class="col-lg-3 col-sm-3" ng-repeat="postfix in jpg_names">
+		    <h4> {[{ postfix }]} </h4>
+		    <a href="http://kgmtscience.kasi.re.kr/gems0/uwife/coadd_jpg/{[{ uwife_id_str }]}_{[{ postfix }]}.jpg">
+                      <img class="img-responsive" ng-src="http://kgmtscience.kasi.re.kr/gems0/uwife/coadd_jpg_small/{[{ uwife_id_str }]}_{[{ postfix }]}.jpg" alt="">
+		    </a>
+                </div>
+            </div>
+
+        </div>
+
+	<br/>
+	<br/>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+
+    <div class="table-responsive">
+      <table class="table">
+
+	  <tr class="info" ng-repeat-start="fnn in filter_names">
+            <th>{[{ fnn }]}</th>
+            <th>Seq.</th>
+            <th> fits images</th>
+	  </tr>
+
+	  <tr ng-repeat="row in uwife_info['file_names'][fnn]">
+            <td></td>
+            <td>{[{ row[0] }]}</td>
+            <td ng-repeat="fn in row[1]">
+	      <a href="{[{ uwife_info['link_list'][fn] }]}">{[{ fn }]}</a>
+	    </td>
+	  </tr>
+
+	  <tr ng-repeat-end=""> </tr>
+
+      </table>
+
+    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->

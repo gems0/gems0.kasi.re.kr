@@ -1,0 +1,33 @@
+extends _layouts/root_base
+
+block layout_content
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          div.page-header
+            h1 Related Projects
+
+
+          each val in public.uwife._data.related
+            div.media
+              // a.pull-left(href="#")
+              //   img.media-object(src="...", alt="...")
+              div.media-body
+                h4.media-heading
+                  span(class="label label-success")!= val.label
+                  &nbsp;
+                  a(href="#{ val.link }")!= val.title 
+
+
+// GPS Mosaic: Zoomable mosaic of the UKIDSS Galactic Plane Survey
+// Glimpse Mosaic: Zoomable mosaic of the Glimpse Galactic Plane Survey
+// Narrow Band WFCAM Images: Database of Near-IR, Narrow-band WFCAM Images for Star Formation by C.J. Davis
+// :  
+
+
+
+// 	MHO Catalogue: Catalogue of Molecular Hydrogen Emission-Line Objects (MHOs) in Outflows from Young Stars by C.J. Davis
+// Extinction Map Query: Online Query tool for extinction maps by D. Froebrich & J. Rowles
+// All Sky Extinction Maps: All sky extinction maps based on 2MASS data (papers, downloads, online query) by D. Froebrich & J. Rowles

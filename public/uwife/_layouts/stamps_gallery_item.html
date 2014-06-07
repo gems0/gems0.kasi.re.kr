@@ -1,0 +1,22 @@
+<a class="list-group-item"
+   ng-click="wcs_pan_zoom_to(stamp)">
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">{{stamp.title}}</h4>
+      <div class="row-fluid">
+	<div class="col-lg-4 col-sm-4">
+	  <h6 class="media-heading">(l, b) = {{stamp.lon}}, {{stamp.lat}}</h6>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+	  <h6 class="media-heading">diameter = {{stamp.diameter_arcmin}}'</h6>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+	  <h6 class="media-heading">tags = {{stamp.tags}}</h6>
+	</div>
+      </div>
+      <p>{{stamp.content}}</p>
+    </div>
+  </div>
+</a>
+
+<!-- [stamp.lon, stamp.lat, stamp.diameter_arcmin] -->

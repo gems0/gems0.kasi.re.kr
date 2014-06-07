@@ -1,0 +1,20 @@
+extends _layouts/stamps_base
+
+block layout_header
+
+block layout_footer
+
+block layout_extra_header
+  include _layouts/stamps_extra_header.html
+
+block layout_content
+  div.content-section-a
+    br
+    div.container-fluid
+      div.row-fluid(ng-controller="StampsCtrl")
+        div(class="col-lg-6 col-sm-6")
+          div#map
+          div#coords(style="height: 1.5em;")
+        div(class="col-lg-6 col-sm-6")
+          include _layouts/stamps_accordion
+

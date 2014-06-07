@@ -1,0 +1,318 @@
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script type="text/javascript" src="/js/angular-route.min.js"></script>
+
+
+<script type="text/javascript" src="/js/stamps/stamps-ctrl.js"></script>
+
+
+
+    <link rel="stylesheet" href="/static/openlayers/theme/default/style.css" type="text/css">
+    <!-- <link rel="stylesheet" href="/static/openlayers/style.css" type="text/css"> -->
+    <style>
+
+        #map {
+            height: 550px;
+            background-color: #eee;
+        }
+
+        .olControlAttribution {
+            bottom: 3px;
+            left: 10px;
+            line-height: 9px;
+            font-size: 9px;
+            color: #ccc;
+        }
+
+	.olControlOverviewMapMinimizeButton, .olControlOverviewMapMaximizeButton {
+	height: 18px;
+	width: 18px;
+	right: 0;
+	bottom: 0px;
+	cursor: pointer;
+	}
+
+
+.scrollspy-example {
+position: relative;
+height: 350px;
+margin-top: 5px;
+overflow: auto;
+
+}
+
+#gallery-help b {
+	color: red
+}
+
+.collapse-head:hover {
+color:red;
+}
+
+
+
+            #map.fs-map {
+	        position: fixed;
+                left: 0;
+                top: 0;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+
+            }
+
+.Panel2 {
+    background: #30d5c8;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+}
+
+.firstItemInactive {
+    background: #ffffff;
+    border: 2px solid #075f67;
+    width: 18px;
+    height: 18px;
+}
+
+.firstItemActive {
+    background: #ffffdd;
+    border: 2px solid #dddddd;
+    width: 18px;
+    height: 18px;
+}
+
+
+
+    </style>
+
+    <script src="/static/openlayers/OpenLayers.js"></script>
+
+    <script type="text/javascript">
+
+        <!-- var zoomify_width = 104000; -->
+	<!-- var zoomify_height = 6800; -->
+        <!-- var cdelt = 2.; -->
+	<!-- <\!-- in second -\-> -->
+
+	<!-- var zoomify_url = "http://kgmtscience.kasi.re.kr/gems0/uwife/allsky_RGB_2pix_zoomify/"; -->
+
+
+        var zoomify_width = 520000;
+	var zoomify_height = 34000;
+        var cdelt = 0.4;
+	<!-- in second -->
+
+	var zoomify_url = "http://leejjoon.kasi.re.kr/uwife/uwife_allsky_RGB_b1_0.4as/";
+
+
+        var map, zoomify;
+	var myextent;
+
+        var my_wcs;
+
+	function wcs_coord(crval1, crval2, crpix1, crpix2,
+                                cdelt1, cdelt2) {
+
+          var to_world = function(pix) {
+
+             lon = crval1 + (pix.lon - crpix1) * cdelt1;
+             lat = crval2 + (pix.lat - crpix2) * cdelt2;
+
+             return {"lon":lon, "lat":lat};
+	  }
+
+          var to_pixel = function(world) {
+
+             pix_lon = (world.lon - crval1) / cdelt1  + crpix1
+             pix_lat = (world.lat - crval2) / cdelt2  + crpix2
+
+             return {"lon":pix_lon, "lat":pix_lat};
+	  }
+
+          var get_pixel_size = function(size_arcmin) {
+             return size_arcmin / 60. / cdelt2;
+	  }
+
+	  return {"to_pixel":to_pixel,
+                  "to_world":to_world,
+                  "get_pixel_size":get_pixel_size}
+	}
+
+        my_wcs = wcs_coord(3.456735622795E+01, 0.,
+                           zoomify_width*0.5, zoomify_height*0.5,
+                          -cdelt/3600., cdelt/3600.);
+
+
+function toggleFullScreen() {
+
+
+
+
+    var mymap = $("#map");
+    if (mymap.hasClass("fs-map")) {
+        mymap.removeClass("fs-map");
+
+	var
+          el = document
+        , rfs =
+               el.exitFullscreen
+            || el.webkitCancelFullScreen
+            || el.mozCancelFullScreen
+	;
+	rfs.call();
+
+
+    } else {
+        mymap.addClass("fs-map");
+
+
+	var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+	;
+	rfs.call(el);
+
+
+    }
+    setTimeout( function() { map.updateSize();}, 200);
+}
+
+        function init(){
+          /* First we initialize the zoomify pyramid (to get number of tiers) */
+          var zoomify = new OpenLayers.Layer.Zoomify( "Zoomify",
+                              zoomify_url,
+                              new OpenLayers.Size( zoomify_width, zoomify_height ),
+                              { extent: myextent,}
+);
+
+          /* Map with raster coordinates (pixels) from Zoomify image */
+          myextent = new OpenLayers.Bounds(0, 0, zoomify_width, zoomify_height)
+          var options = {
+	            maxExtent: myextent,
+                    restrictedExtent: myextent,
+	            maxResolution: Math.pow(2, zoomify.numberOfTiers - 1 ),
+	            numZoomLevels: zoomify.numberOfTiers,
+	            units: 'pixels',
+                    <!-- zoomMethod: null, -->
+	  };
+
+	  map = new OpenLayers.Map("map", options);
+	  map.addLayer(zoomify);
+
+          map.setBaseLayer(zoomify);
+
+	  if (!map.getCenter()) {
+	    <!-- map.zoomToMaxExtent(); -->
+	    map.zoomTo(5);
+          }
+
+          // the width of the overview map in pixel
+           var ll = 512.;
+           var a = ll;
+           var b = ll*zoomify_height/zoomify_width;
+
+           // name of the image for the overview
+           var aaa = "/img/uwife_allsky_RGB_1024.jpg";
+
+           var overviewMap = new OpenLayers.Layer.Image(
+                 'overviewMap',
+                 aaa,
+                 new OpenLayers.Bounds(0, 0, zoomify_width, zoomify_height),
+                 new OpenLayers.Size(a, b),
+                 { numZoomLevels: 1,
+                 }
+           );
+
+           var overviewMapControl = new OpenLayers.Control.OverviewMap(
+                  { size: new OpenLayers.Size(a, b),
+                    layers: [overviewMap],
+                    autoPan:false, // somehow this does now work.
+                    maximized:true,
+                    mapOptions:{maxExtent: myextent,
+                                restrictedExtent: myextent},
+                   });
+
+           map.addControl(overviewMapControl);
+
+
+
+	   var panel_type2 = new OpenLayers.Control.Panel({
+                   displayClass: 'Panel2',
+                   });
+           map.addControl(panel_type2);
+
+           var button = new OpenLayers.Control.Button({
+               type: OpenLayers.Control.TYPE_TOGGLE,
+	       displayClass: "first",
+	       eventListeners: {'activate': toggleFullScreen,
+	                        'deactivate': toggleFullScreen}
+           });
+           panel_type2.addControls([button]);
+
+
+
+	   var keyboard_contol = new OpenLayers.Control.KeyboardDefaults();
+           map.addControl(keyboard_contol);
+	   keyboard_contol.slideFactor = 250;
+
+           map.events.register("mousemove", map, function(e) {
+               var position = this.events.getMousePosition(e);
+	       var lonlat = map.getLonLatFromPixel( this.events.getMousePosition(e) );  // this is in pixel actually
+               var mylonlat = my_wcs.to_world(lonlat);
+               OpenLayers.Util.getElement("coords").innerHTML = "(l, b) = " + mylonlat["lon"].toFixed(4) + " " + mylonlat["lat"].toFixed(4);
+           });
+
+
+
+
+
+        };
+
+
+	function wcs_pan_zoom_to(lon, lat, dia_arcmin) {
+	    var pixel = my_wcs.to_pixel({"lon":lon, "lat":lat});
+            var lonlat = new OpenLayers.LonLat(pixel.lon, pixel.lat);
+
+	    if (dia_arcmin) {
+	      var rad = my_wcs.get_pixel_size(dia_arcmin);
+	      var bbox = new OpenLayers.Bounds(
+                pixel.lon - rad,
+                pixel.lat - rad,
+                pixel.lon + rad,
+                pixel.lat + rad
+              );
+
+              map.zoomToExtent(bbox);
+	    }
+
+            map.panTo(lonlat);
+
+        }
+
+	<!-- $( document ).ready(function() { -->
+	<!--   init(); -->
+	<!-- }); -->
+
+
+
+
+	function gallery_panto() {
+          var lon = document.getElementById("gal_lon").value;
+          var lat = document.getElementById("gal_lat").value;
+          wcs_pan_zoom_to(parseFloat(lon), parseFloat(lat));
+	}
+
+
+
+
+
+
+
+    </script>
+

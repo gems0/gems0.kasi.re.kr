@@ -1,0 +1,14 @@
+footer
+        div.container
+            .row
+                .col-lg-12
+                    ul.list-inline
+                        li: a(href="/uwife.html") Home
+
+                        each val in public.uwife._data.navlinks
+                          li.footer-menu-divider &sdot;
+                          li: a(href="#{ val.link }")!= val.label
+
+
+                    p(class="copyright text-muted small") Copyright &copy; GEMS0 2014. All Rights Reserved
+                    p(class="copyright text-muted small") Comments to: leejjoon @ kasi.re.kr

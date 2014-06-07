@@ -1,0 +1,20 @@
+extends _layouts/root_base
+
+block layout_content
+  div.content-section-a
+    div.container
+      p
+      div(class="panel panel-info")
+        div(class="panel-heading") Data Use Policy
+        div(class="panel-body")
+          p.
+            All the images from the survey and the continuum-subtracted images
+            will be made public eventually through this page. For now, all the CASU
+            pipeline products are available together with most of the
+            continuum-subtracted images.
+
+          p.
+            Please cite the UWIFE survey paper (Lee et al. 2014, MNRAS,
+            submitted) if you are using any of the data in a publication.
+
+      include _layouts/data_section.html

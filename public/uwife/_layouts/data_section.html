@@ -1,0 +1,202 @@
+<section id="content" class="content">
+
+            <h1>UWIFE Preliminary Data Access</h1>
+
+<p>The observed [Fe II] images (products of CASU pipeline) are available
+from the following location. Also available are continuum subtracted
+(H-band subtracted) images.
+
+</p>
+<p>You should connect via &quot;sftp&quot;.
+
+</p>
+<ul>
+<li>ip : 103.8.230.113 </li>
+<li>port : 7774</li>
+<li>login name : gems0_public</li>
+</ul>
+<p>The password is gems0. For easy access
+to the server, send me (lee.j.joon@gmail.com) your public ssh key.
+</p>
+
+
+<!-- <p>The CASU-pipeline processed images are found under the directory of "/data/uwife/casu_pipeline"</p> -->
+
+<h2>Pipeline images</h2>
+<p>The pipeline processed [Fe II] images are located under &quot;data/uwife/casu_pipeline&quot;
+directory, whose listing may look like below.
+
+</p>
+<pre class="prettyprint">README                             uwife_20120623_20120708
+reduced                            uwife_20120623_20120708_old
+status                             uwife_20120623_20120708v2
+uwife_20120620_20120622            uwife_20120709_20120713
+uwife_20120620_20120622_old        uwife_20120724_20120730
+uwife_20120620_20120622v2          uwife_20120814_20120824
+uwife_20120620_20120622_w44_short  uwife_20120913_20120916
+</pre>
+
+<p>The files are further divided into subdirectories according to their
+observed dates. For example, <strong>uwife_20120913_20120916</strong> contains
+
+</p>
+<pre class="prettyprint">w20120913_00153_sf_st_cat.fits  w20120914_01474_sf_st.fit
+w20120913_00153_sf_st_conf.fit  w20120914_01486_sf_st_cat.fits
+w20120913_00153_sf_st.fit       w20120914_01486_sf_st_conf.fit
+w20120913_00165_sf_st_cat.fits  w20120914_01486_sf_st.fit
+...
+w20120914_01462_sf_st.fit       w20120916_00239_sf_st_conf.fit
+w20120914_01474_sf_st_cat.fits  w20120916_00239_sf_st.fit
+w20120914_01474_sf_st_conf.fit
+</pre>
+
+<p>The file name represent the date of observation and the run id. Files
+ending &quot;_sf_st.fit&quot; are images. These FITS image files have 4
+extensions corresponding to 4 chips (w, x, y and z). Note that the
+images are rice-compressed. You may find <a href="http://www.jach.hawaii.edu/UKIRT/observing/cookbooks/wfcam_reduction_cookbook.html">this
+page</a>
+helpful. Files ending with &quot;_sf_st_cat.fits&quot; are catalog of detected
+sources, and the files with &quot;_sf_st_conf.fit&quot; are confidence maps.
+
+</p>
+<p>For each tile (a single square in <a href="uwife_status">the coverage maps</a>),
+which is about $50&#39;\times50&#39;$, there are 4 fits files where each file contains 4
+images, i.e., total of 16 images for a single tile. For example, 4 files associated with tile number 129 are
+
+</p>
+<pre class="prettyprint">w20120626_00631_sf_st.fit
+w20120626_00643_sf_st.fit
+w20120626_00655_sf_st.fit
+w20120626_00667_sf_st.fit
+</pre>
+
+<p>The mapping information between tile number and the associated files can be found from the file of &quot;data/uwife/casu_pipeline/uwife_info_20120620_20130915_v5.tgz&quot;. This file can be also downloaded from the link below.
+
+</p>
+<ul>
+<li><a href="https://dl.dropbox.com/u/178748/uwife/uwife_www/uwife_info_20120620_20130915_v5.tgz">info file</a></li>
+</ul>
+<p>You will see files named like <strong>uwife0033_FeII_l15_50:129.info</strong> which
+contains lines similar to below.
+
+</p>
+<pre class="prettyprint">[FeII]
+0_0 : w20120626_00631_sf_st.fit
+1_0 : w20120626_00643_sf_st.fit
+0_1 : w20120626_00655_sf_st.fit
+1_1 : w20120626_00667_sf_st.fit
+....
+w20120626_00631_sf_st.fit : sftp://gems0_public@103.8.230.221:wfcam/uwife_20120623_20120708/w20120626_00631_sf_st.fit
+....
+</pre>
+
+<p>It lists associated file names for each filter, and the urls to
+download those files. <strong>0_0</strong>, <strong>0_1</strong>, <strong>1_0</strong> and <strong>1_1</strong> are
+sequence name, i.e., a single tile is consist of 4 sequences.
+
+</p>
+<h2>Continuum subtracted images</h2>
+<p>Continuum-subtracted images are available under
+<strong>data/uwife/compressed</strong> directory of the above server. Both [Fe
+II] and H$_{2}$
+images are available (but some are missing due to
+various reasons). The number of continuum-subtracted [Fe II] images is
+currently 3432, which corresponds to about ~210 tiles (for some tiles, not all
+16 images are availble). The number is slightly less for H$_{2}$. Files are
+named like below.
+
+</p>
+<pre class="prettyprint">uwife000_FeII_S0_0v0_w_starsub.fits.fz
+uwife000_FeII_S0_0v0_x_starsub.fits.fz
+uwife000_FeII_S0_0v0_y_starsub.fits.fz
+....
+uwife061_FeII_S1_1v0_y_starsub.fits.fz
+uwife061_FeII_S1_1v0_z_starsub.fits.fz
+uwife061_H2_S0_0v0_w_starsub.fits.fz
+uwife061_H2_S0_0v0_x_starsub.fits.fz
+....
+</pre>
+
+<p>The three digit number at the beginning is the tile number, followed
+by the filter nane, sequence number and chip id.
+
+</p>
+<p>For example, <strong>uwife061_FeII_S1_1v0_z_starsub.fits.fz</strong> represents
+
+</p>
+<ul>
+<li>tile number : 61</li>
+<li>sequence : 1_1</li>
+<li>chip id : z</li>
+</ul>
+<p>Note that there are 4 chips (corresponds to 4 images in the pipeline
+fits file), which are labeled as <strong>w</strong>, <strong>x</strong>, <strong>y</strong> and <strong>z</strong>.
+
+</p>
+<h2>Find image you want</h2>
+<p>Under <strong>data/uwife/info</strong>, you will also find two files.
+
+</p>
+<ul>
+<li>uwife_msb_id_target_name.txt</li>
+<li>wfcam_fov.txt</li>
+</ul>
+<p>&quot;uwife_msb_id_target_name.txt&quot; contains nominal position of each tile.
+
+</p>
+<p>&quot;Wfcam_fov&quot; contains fov of each array (for each sequence) relative to
+the nominal position in &quot;uwife_msb_id_target_name.txt&quot;. The coordinate
+need to be calculated in Ra.Dec.
+
+</p>
+<p>Thus, using these files you can figure out which tile contains your target.
+
+</p>
+<p><strong>/cluster_results/find_msb.tgz</strong> contains a python script that does
+  that for you (the search algorithm is quite naive thus slow).
+
+</p>
+<p>If you untar <strong>data/uwife/info/find_msb.tgz</strong>, you will see following files.
+
+</p>
+<p>To search a point, provide ra &amp; dec.
+
+</p>
+<pre class="prettyprint"> > ./find_uwife.py 272.8625 -19.416
+ 7 1_0 y
+</pre>
+
+<p>The output is tile numner, sequence, and chip id, i.e., for above
+position you need to take a look at
+<strong>uwife007_FeII_S1_0v0_y_starsub.fits.fz</strong> for the
+continuum-subtracted FeII image. For a pipeline-processed image,
+you can find an appropriate file from the info files. Take a look at
+<strong>uwife0007_FeII_lm2_15:77.info</strong>.
+
+</p>
+<pre class="prettyprint">[FeII]
+0_0 : w20120620_00780_sf_st.fit
+1_0 : w20120620_00792_sf_st.fit
+0_1 : w20120620_00804_sf_st.fit
+1_1 : w20120620_00816_sf_st.fit
+...
+</pre>
+
+<p>And <strong>w20120620_00792_sf_st.fit</strong> is the right file. Since, your
+source is in chip <strong>y</strong>, you have to look at 3rd extension.
+
+</p>
+<ul>
+<li>All units must be in degree.</li>
+<li>it may return multiple images.</li>
+<li>it may return images yet to be observed, i.e., you need to check the existence of such images by yourself.</li>
+</ul>
+<p>Similarly, to seach for images that overlaps with a given rectangle,
+provide ra &amp; dec of center together with width and height (all in degrees).
+
+</p>
+<pre class="prettyprint"> > ./find_uwife.py 272.8625 -19.416 0.05 0.05
+ 7 1_0 y
+ 7 1_1 z
+</pre>
+</section>

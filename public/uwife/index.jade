@@ -1,0 +1,190 @@
+extends _layouts/root_base
+
+block layout_content
+  include _layouts/facebook_body.html
+  div.intro-header
+    div.container
+      .row
+        .text-right
+          button(type="button", class="btn btn-link")
+            .g-plusone(data-annotation="none", data-href="http://gems0.kasi.re.kr/uwife/")
+          button(type="button", class="btn btn-link")
+            .fb-like(data-href="http://gems0.kasi.re.kr/uwife/", data-layout="button", data-action="like", data-show-faces="true", data-share="false")
+
+      div.row
+        div.col-lg-12
+          div.intro-message
+            h1 UWIFE Survey
+            h3 UKIRT Widefield Infrared survey for Fe+
+            hr.intro-divider
+            include _layouts/button.html
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-5 col-sm-6")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading Survey
+          p.lead.
+            We have imaged about 180 square
+            degrees along the Galactic Plane (7<sup>∘</sup> < l < 62<sup>∘</sup>;
+            -1.5<sup>∘</sup> < b < +1.5<sup>∘</sup>) with WFCAM at UKIRT. The
+            observations are taken with the narrow band
+            filter centred on the atomic Iron emission line
+            ([Fe II] 1.644 μm) with an integration time of 720
+            sec per pixel.
+
+        div(class="col-lg-4 col-lg-offset-2 col-sm-5")
+          legend UKIRT
+          img(class="img-responsive", src="http://www.allesoversterrenkunde.nl/media/medialibrary/2012/07/nieuws5408a.jpg", alt="")
+
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading [Fe II] 1.644 μm
+          p.lead.
+            The [Fe II] 1.644 μm line would
+            highlight regions of predominantly shock-excited
+            dense gas. The emission line is an excellent
+            tracer of dense outflows in young and massive
+            star forming regions, eruptive mass loss from
+            evolved stars, and dense media
+            interacting with supernova remnants.
+
+          p.lead.
+            In this figure, the [Fe II] 1.644 μm
+            emission is shown in blue while H<sub>2</sub> 2.122 μm is shown
+            in red.
+        div(class="col-lg-4 col-sm-pull-6  col-sm-5")
+          legend The Orion Bullets
+          img.img-responsive(src="http://www.gemini.edu/images/pio/News/2013/pr2013_01/fig1.jpg", alt="")
+          p Image Credit: GeMS/GSAOI Team, Gemini Observatory
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading Complementary Surveys
+          p.lead.
+            The survey is designed to cover
+            the same region as
+            in <a href="http://astro.kent.ac.uk/uwish2/">UWISH2</a>
+            and is to complement the UWISH2 survey.  The
+            UWIFE survey is being conducted with the same
+            telescope and detector combination as in the
+            UWISH2 survey, but only with different
+            filter. Further, the survey will complement the
+            UKIDSS Galactic Plane JHK survey, and various
+            other surveys like the IPHAS Ha survey, the VLA
+            5 Ghz CORNISH survey, etc.
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading UWIFE Survey Status
+          p.lead.
+            The observations of the UWIFE survey was conducted
+            during 2012 and 2013 seasons. We have
+            covered total of 220 tiles of inner Galactic plane.
+            The coverage of the survey is shown in the figure below.
+
+
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          img(class="img-responsive", src="img/uwife_coverage_2mass_v2.png", alt="")
+
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          p.lead.
+            The white contour outlines
+            the UWIFE survey area in the inner Galactic plane.
+            The black contour outlines the UWISH2 survey coverage
+            that are not included the UWIFE survey.
+            The background RGB composite image are the 2MASS K, H
+            and J band,
+            respectively.
+            The yellow rectangle in the lower
+            right corner shows a nominal size and
+            orientation of a single tile.
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading UWIFE Survey Mosaic
+          p.lead.
+            The figure below presents the mosaic images of
+            the surveys.  The top panel is the RGB composite
+            of GPS J, UWIFE, and UWISH2 survey where the
+            mosaics of each survey are individually
+            displayed in panels below.
+
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          img(class="img-responsive", src="img/uwife_mosaic_v2.png", alt="")
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-12 col-sm-12")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading UWIFE Sky Statistics
+          p.lead
+          img(class="img-responsive", src="img/year2_seeing_skymap.png", alt="")
+
+
+  div.content-section-a
+    div.container
+      div.row
+        div(class="col-lg-5 col-sm-6")
+          hr.section-heading-spacer
+          div.clearfix
+          h2.section-heading Histogram of airmass, seeing, etc.
+          p.lead
+
+        div(class="col-lg-5 col-lg-offset-2 col-sm-6")
+          img(class="img-responsive", src="img/year2_seeing_hist.png", alt="")
+
+  // div.content-section-a
+  //   div.container
+  //     div.row
+  //       div(class="col-lg-12 col-sm-12")
+  //         hr.section-heading-spacer
+  //         div.clearfix
+  //         h2.section-heading Complementary Surveys
+  //         p.lead.
+  //           The survey is designed to cover
+  //           the same region as
+  //           in <a href="http://astro.kent.ac.uk/uwish2/">UWISH2</a>
+  //           and is to complement the UWISH2 survey.  The
+  //           UWIFE survey is being conducted with the same
+  //           telescope and detector combination as in the
+  //           UWISH2 survey, but only with different
+  //           filter. Further, the survey will complement the
+  //           UKIDSS Galactic Plane JHK survey, and various
+  //           other surveys like the IPHAS Ha survey, the VLA
+  //           5 Ghz CORNISH survey, etc.
+
+  //     div.row
+  //       div(class="col-lg-12 col-sm-12")
+  //         img(class="img-responsive", src="img/uwife_coverage_2mass_v2.png", alt="")
+
+  include _layouts/gplus_body.html

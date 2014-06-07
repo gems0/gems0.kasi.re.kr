@@ -1,0 +1,54 @@
+{
+  "navlinks": [
+   {  
+    "label": "Data",
+    "link": "data.html"
+   },
+   {  
+    "label": "Table",
+    "link": "table.html"
+   },
+   {  
+    "label": "Gallery",
+    "link": "stamps.html"
+   },
+   {  
+    "label": "People",
+    "link": "people.html"
+   },
+   {  
+    "label": "Publications",
+    "link": "publications.html"
+   },
+   {  
+    "label": "Related Projects",
+    "link": "related.html"
+   }
+  ],
+  "related": [
+   {  
+    "link": "http://astro.kent.ac.uk/uwish2/",
+    "title": "UKIRT Widefield Infrared Survey for H<sub>2</sub>",
+    "label": "UWISH2"
+   },
+   {  
+    "link": "http://astro.kent.ac.uk/protostars/",
+    "title": "Database of confirmed and suspected Class0/1 protostars by D. Froebrich",
+    "label": "Protostars Database"
+   },
+   {  
+    "link": "http://surveys.roe.ac.uk:8080/wsa/gps_mosaic.jsp",
+    "title": "Zoomable mosaic of the UKIDSS Galactic Plane Survey",
+    "label": "GPS Mosaic"
+   },
+   {  
+    "link": "http://www.alienearths.org/glimpse/glimpse.php",
+    "title": "Zoomable mosaic of the Glimpse Galactic Plane Survey",
+    "label": "Glimpse Mosaic"
+   }
+  ],
+  "hello-brazil": {
+    "title": "Hello Brazil.",
+    "date": "2013-03-04"
+  }
+}

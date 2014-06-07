@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="panel-group" id="accordion">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title collapse-head"
+              data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+            Bookmarks
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            {{ gallery_bookmarks() }}
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title collapse-head"
+              data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree">
+            Pan To (Galactic Coord.)
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+            {{ gallery_panto() }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+div(class="panel panel-default")
+  div.panel-body
+    div(class="panel-group", id="accordion")
+      include stamps_accordion_about.html
+
+      div(class="panel panel-default")
+        div(class="panel-heading")
+          h4(class="panel-title collapse-head", data-toggle="collapse", data-parent="#accordion", data-target="#collapseTwo") Bookmarks
+        div(id="collapseTwo", class="panel-collapse collapse")
+          div.panel-body
+            div.scrollspy-example
+              div(class="list-group", ng-repeat="stamp in stamps")
+                include stamps_gallery_item.html
+
+      div(class="panel panel-default")
+        div(class="panel-heading")
+          h4(class="panel-title collapse-head", data-toggle="collapse", data-parent="#accordion", data-target="#collapseThree") Pan To (Galactic Coord.)
+        div(id="collapseThree", class="panel-collapse collapse")
+          div.panel-body
+            include gallery_panto
+
