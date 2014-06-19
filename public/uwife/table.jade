@@ -10,6 +10,10 @@ block layout_extra_header
 
   script(type="text/javascript", src="/js/table/list.js")
 
+  link(rel="stylesheet", href="/js/ladda/ladda-themeless.min.css")
+  script(src="/js/ladda/spin.min.js")
+  script(src="/js/ladda/ladda.min.js")
+
 block layout_content
   include _layouts/table_go.html
 
@@ -37,7 +41,8 @@ block layout_content
               label.sr-only(for="query_size") Box Size
               input(type="text", id="query_size", class="form-control", ng-model="size", placeholder="Search Box size in deg.")
             // buttonspan.input-group-btn
-            button(class="btn btn-default", type="button", ng-click="do_query()") Search
+            button(class="btn btn-default ladda-button", id="query_btn", data-style="slide-up", data-spinner-color="#FF0000", type="button", ng-click="do_query()") 
+              span.ladda-label Search
             button(class="btn btn-warning", type="button", ng-click="clear_query()") Clear
 
         div.table-responsive

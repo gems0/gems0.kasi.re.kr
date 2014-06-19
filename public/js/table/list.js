@@ -34,13 +34,23 @@ tableListApp.factory('tableListFactory', function($http) {
     return obj;
 });
 
-function tableRootCtrl($scope, $http) {
+function tableRootCtrl($scope, $http, $document) {
+    var query_button = document.getElementById("query_btn");
+
     $scope.do_query = function() {
-	$http.jsonp("http://gems0-uwife.appspot.com/query/jsonp?callback=JSON_CALLBACK&coord=gal&lon=" + $scope.lon + "&lat=" + $scope.lat + "&width=" + $scope.size).success(
-	    function(data) {
-		$scope.filtered_list = data;
-	    }
-	);
+	var l = Ladda.create(query_button);
+	l.start();
+
+	$http.jsonp("http://gems0-uwife.appspot.com/query/jsonp?callback=JSON_CALLBACK&coord=gal&lon=" + $scope.lon + "&lat=" + $scope.lat + "&width=" + $scope.size)
+	    .success(
+		function(data) {
+		    $scope.filtered_list = data;
+		    l.stop();
+		}
+	    )
+	    .error(function() { 
+	    	l.stop(); 
+	    });
     };
 
     $scope.clear_query = function() {
