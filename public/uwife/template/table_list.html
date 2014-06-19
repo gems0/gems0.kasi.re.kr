@@ -1,5 +1,7 @@
 
-    <div class="content-section-a">
+    <!-- <div class="content-section-a"> -->
+        <!-- <p ng-if="filtered_list"> XXX = {[{ filtered_list.value }]} </p> -->
+        <!-- <p ng-if="filtered_list"> XXX = {[{ msbid_list }]} </p> -->
 
         <div class="container">
 
@@ -17,7 +19,7 @@
 	  <th>Dec.</th>
 	</tr>
 
-	<tr ng-repeat="row in table_summary.data"
+	<tr ng-repeat="row in filter_msbid(table_summary.data)"
 	    ng-click="go( row[0] )">
           <th><a href="#/{[{ row[0] }]}">{[{ row[0] }]}</a></th>
           <td><a href="#/{[{ row[0] }]}">{[{ row[1] }]}</a></td>
@@ -40,5 +42,5 @@
         </div>
         <!-- /.container -->
 
-    </div>
+    <!-- </div> -->
     <!-- /.content-section-a -->
