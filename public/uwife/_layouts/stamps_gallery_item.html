@@ -1,5 +1,6 @@
 <a class="list-group-item"
-   ng-click="wcs_pan_zoom_to(stamp)">
+   ng-click="wcs_pan_zoom_to(stamp)"
+   ng-class="{true:'selected', false:''}[stamp==current_stamp]">
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">{{stamp.title}}</h4>
@@ -7,11 +8,13 @@
 	<div class="col-lg-4 col-sm-4">
 	  <h6 class="media-heading">(l, b) = {{stamp.lon}}, {{stamp.lat}}</h6>
 	</div>
-	<div class="col-lg-4 col-sm-4">
-	  <h6 class="media-heading">diameter = {{stamp.diameter_arcmin}}'</h6>
-	</div>
-	<div class="col-lg-4 col-sm-4">
-	  <h6 class="media-heading">tags = {{stamp.tags}}</h6>
+	<!-- <div class="col-lg-4 col-sm-4"> -->
+	<!--   <h6 class="media-heading">diameter = {{stamp.diameter_arcmin}}'</h6> -->
+	<!-- </div> -->
+	<div class="col-lg-8 col-sm-8">
+	  <h6 class="media-heading">tags =
+	    <button type="button" class="btn btn-default btn-xs" ng-repeat="btnname in stamp.tags" ng-click="tag_click(btnname)">{{ btnname}}</button>
+	  </h6>
 	</div>
       </div>
       <p>{{stamp.content}}</p>

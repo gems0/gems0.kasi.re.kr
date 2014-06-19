@@ -21,7 +21,7 @@ tableListApp.factory('tableListFactory', function($http) {
 	       data:null,
 	      };
 
-    obj.json_root="uwife_info_20120620_20130915_v9_filtered.json";
+    obj.json_root="uwife_info_20120620_20130915_v9_filtered_wsa.json";
     obj.json_ext=".html";
 
     $http.get(obj.json_root+"/uwife_summary.json"+obj.json_ext).success(

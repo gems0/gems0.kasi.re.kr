@@ -8,8 +8,13 @@ div(class="panel panel-default")
           h4(class="panel-title collapse-head", data-toggle="collapse", data-parent="#accordion", data-target="#collapseTwo") Bookmarks
         div(id="collapseTwo", class="panel-collapse collapse")
           div.panel-body
+            div.input-group
+              span.input-group-addon Filter
+              input(type="text", class="form-control", ng-model="query", placeholder="Name or Tag")
+              span.input-group-btn
+                button(class="btn btn-default", type="button", ng-click="clear_query()") Clear
             div.scrollspy-example
-              div(class="list-group", ng-repeat="stamp in stamps")
+              div(class="list-group", ng-repeat="stamp in stamps | filter:query")
                 include stamps_gallery_item.html
 
       div(class="panel panel-default")

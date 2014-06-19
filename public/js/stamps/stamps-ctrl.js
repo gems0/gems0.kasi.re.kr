@@ -16,12 +16,21 @@ StampsApp.factory('StampsAppFactory', function($http, $q) {
 
 
 function StampsCtrl($scope, $http, StampsAppFactory) {
+    $scope.current_stamp = "";
 
     $scope.wcs_pan_zoom_to = function(stamp) {
+	$scope.current_stamp = stamp;
 	wcs_pan_zoom_to(stamp.lon, stamp.lat, stamp.diameter_arcmin);
 	return false;
     }
 
+    $scope.tag_click = function(btnname) {
+	$scope.query = btnname;
+    }
+
+    $scope.clear_query = function() {
+	$scope.query = "";
+    }
 
     fetch = function(url) {
         $http.jsonp(url).success(function (data) {
